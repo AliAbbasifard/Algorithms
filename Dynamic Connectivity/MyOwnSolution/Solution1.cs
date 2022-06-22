@@ -9,7 +9,7 @@ namespace MyOwnSolution
 {
     public class Solution1
     {
-        public static bool Solve(IEnumerable<int> nodes, IEnumerable<(int, int, bool)> pathes, int start, int end)
+        public static bool Solve(IEnumerable<int> nodes, ICollection<(int, int, bool)> pathes, int start, int end)
         {
             var pathStack = new Stack<(int, int, bool)>();
 
@@ -28,9 +28,11 @@ namespace MyOwnSolution
 
             while (!current.Equals(end))
             {
-                // find available path from current node
-                var availablePath = pathes.Where(path => (path.Item1.Equals(start) || path.Item2.Equals(start)) && path.Item3.Equals(false));
-                
+                // find available path from current node which not seen yet
+                var availablePath = pathes.Where(path =>
+                (path.Item1.Equals(current) || path.Item2.Equals(current)) && 
+                path.Item3.Equals(false));
+
                 foreach (var path in availablePath)
                     pathStack.Push(path);
 
@@ -38,6 +40,10 @@ namespace MyOwnSolution
                     return false;
 
                 var choosenPath = pathStack.Pop();
+
+                // change path state to true (means seen)
+                pathes.Remove(choosenPath);
+                pathes.Add((choosenPath.Item1, choosenPath.Item2, true));
 
                 var next = choosenPath.Item1.Equals(current) ? choosenPath.Item2 : choosenPath.Item1;
 
