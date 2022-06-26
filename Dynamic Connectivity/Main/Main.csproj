@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyOwnSolution\MyOwnSolution.csproj" />
     <ProjectReference Include="..\Quick-Find\Quick-Find.csproj" />
+    <ProjectReference Include="..\QuickUnion\Quick-Union.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,10 +8,7 @@ namespace Quick_Find
     {
         private IList<int> nodes;
         public QuickFind(int number) => nodes = Enumerable.Range(0, number).ToList();
-
-
         public bool Connected(int first, int second) => nodes[first].Equals(nodes[second]);
-
         // too expensive operation
         public void Union(int first, int second)
         {

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Main", "Main.csproj", "{E63
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyOwnSolution", "..\MyOwnSolution\MyOwnSolution.csproj", "{F7F98844-3319-4C04-93EB-6977E19749C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quick-Find", "..\Quick-Find\Quick-Find.csproj", "{53FA5553-553A-4DC3-929C-BE2131128712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quick-Find", "..\Quick-Find\Quick-Find.csproj", "{53FA5553-553A-4DC3-929C-BE2131128712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quick-Union", "..\QuickUnion\Quick-Union.csproj", "{87C51931-310F-4646-AEC9-6EFA230595C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{53FA5553-553A-4DC3-929C-BE2131128712}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53FA5553-553A-4DC3-929C-BE2131128712}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53FA5553-553A-4DC3-929C-BE2131128712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C51931-310F-4646-AEC9-6EFA230595C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C51931-310F-4646-AEC9-6EFA230595C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C51931-310F-4646-AEC9-6EFA230595C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C51931-310F-4646-AEC9-6EFA230595C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

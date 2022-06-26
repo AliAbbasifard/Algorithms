@@ -1,5 +1,6 @@
 ﻿using MyOwnSolution;
 using Quick_Find;
+using Quick_Union;
 using System;
 using System.Collections.Generic;
 
@@ -90,6 +91,43 @@ namespace Main
             //}
             //else
             //    Console.WriteLine("number of nodes should be positive number");
+            #endregion
+
+            #region QuickUnion
+            Console.Write("Number of nodes: ");
+            var number = int.Parse(Console.ReadLine());
+
+            if (number > 0)
+            {
+                var finished = false;
+                QuickUnion quickUnion = new QuickUnion(number);
+
+                while (!finished)
+                {
+                    Console.Write("Enter first node: ");
+                    int firstNode = int.Parse(Console.ReadLine());
+                    Console.Write("Enter second node: ");
+                    int secondNode = int.Parse(Console.ReadLine());
+
+                    if (!quickUnion.Connected(firstNode, secondNode))
+                        quickUnion.Union(firstNode, secondNode);
+
+                    Console.Write("finished? y if Yes.");
+                    finished = Console.ReadLine().ToLower().Equals("y") ? true : false;
+                }
+
+                Console.WriteLine("Now Insert Two Value to check if are Connected or Not!");
+                Console.Write("First: ");
+                var first = int.Parse(Console.ReadLine());
+                Console.Write("Second:");
+                var second = int.Parse(Console.ReadLine());
+
+                var result = quickUnion.Connected(first, second);
+
+                Console.WriteLine(result);
+            }
+            else
+                Console.WriteLine("number of nodes should be positive number");
             #endregion
         }
     }
