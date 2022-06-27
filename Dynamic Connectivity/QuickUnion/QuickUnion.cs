@@ -8,18 +8,20 @@ namespace Quick_Union
     {
         private IList<int> nodes;
         public QuickUnion(int number) => nodes = Enumerable.Range(0, number).ToList();
-        public int Root(int nodeIndex)
+        public int Root(int node)
         {
-            while (!nodes[nodeIndex].Equals(nodeIndex))
-                nodeIndex = nodes[nodeIndex];
+            // a node is root when nodes[node].Equal(node)
+            while (!nodes[node].Equals(node))
+                node = nodes[node];
 
-            return nodeIndex;
+            return node;
         }
-        public bool Connected(int first, int second) => Root(first).Equals(Root(second));
+        public bool Connected(int first, int second) => Root(first).Equals(Root(second)); // O(N)
         public void Union(int first, int second)
         {
+            // O(N)
             var notValidValue = Root(first);
-            var targetValue = Root(second);
+            var targetValue = Root(second); 
 
             nodes[notValidValue] = targetValue;
         }
