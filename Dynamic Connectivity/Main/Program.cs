@@ -3,6 +3,7 @@ using Quick_Find;
 using Quick_Union;
 using System;
 using System.Collections.Generic;
+using Weighted_Quick_Union;
 
 namespace Main
 {
@@ -100,7 +101,7 @@ namespace Main
             if (number > 0)
             {
                 var finished = false;
-                QuickUnion quickUnion = new QuickUnion(number);
+                WeightedQuickUnion quickUnion = new WeightedQuickUnion(number);
 
                 while (!finished)
                 {

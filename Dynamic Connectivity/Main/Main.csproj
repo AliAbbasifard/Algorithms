@@ -9,6 +9,7 @@
     <ProjectReference Include="..\MyOwnSolution\MyOwnSolution.csproj" />
     <ProjectReference Include="..\Quick-Find\Quick-Find.csproj" />
     <ProjectReference Include="..\QuickUnion\Quick-Union.csproj" />
+    <ProjectReference Include="..\Weighted-Quick-Union\Weighted-Quick-Union.csproj" />
   </ItemGroup>
 
 </Project>
