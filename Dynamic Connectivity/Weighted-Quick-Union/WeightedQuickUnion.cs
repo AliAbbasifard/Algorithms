@@ -17,7 +17,15 @@ namespace Weighted_Quick_Union
         {
             // a node is root when nodes[node].Equal(node)
             while (!nodes[node].Equals(node))
+            {
+                /* if we want to apply path compression to this algorithm
+                 we should set parent of each node in a path to the root.
+                but if we want a little improvement, we just set parent of each node in path
+                to its grandparent: nodes[node] = nodes[nodes[node]]; => parrnet of node i = parent of parent of node i
+                 */
+                //nodes[node] = nodes[nodes[node]];
                 node = nodes[node];
+            }
 
             return node;
         }
