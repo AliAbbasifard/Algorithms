@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,17 +13,23 @@ namespace Stack
             this.numbers = new LinkedList<T>(numbers);
         }
 
+        public LinkedListImplementation()
+        {
+            this.numbers = new LinkedList<T>();
+        }
+
         public bool IsEmpty() => this.numbers.Count == 0;
 
-        //public T Pop()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public T Pop()
+        {
+            var item = numbers.First.Value;
 
-        //public void Push(T item)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            numbers.RemoveFirst();
+
+            return item;
+        }
+
+        public void Push(T item) { numbers.AddFirst(item); }
 
         public int Size() => this.numbers.Count;
     }
