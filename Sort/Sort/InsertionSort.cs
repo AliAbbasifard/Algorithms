@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace Sort
 {
-    internal static class SelectionSort
+    internal static class InsertionSort
     {
         public static IEnumerable<IComparable> Sort(List<IComparable> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
-                var min = i;
-                for (int j = i+1; j < list.Count; j++)
+                for (int j = i; j > 0 ; j--)
                 {
-                    if (list[j].CompareTo(list[min]) < 0)
-                        min = j;
+                    if (list[j - 1].CompareTo(list[j]) > 0)
+                    {
+                        var x = list[j];
+                        list[j] = list[j - 1];
+                        list[j - 1] = x;
+                    }
+                    else
+                        break;
                 }
-
-                var x = list[i];
-                list[i] = list[min];
-                list[min] = x;
             }
 
             return list;
