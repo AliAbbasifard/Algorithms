@@ -8,30 +8,27 @@ namespace Sort
 {
     internal static class ShellSort
     {
-        public static IEnumerable<IComparable> Sort(IList<IComparable> nums)
+        public static TSource[] SSort<TSource>(this TSource[] array) where TSource : IComparable
         {
-            int n = nums.Count;
-            int h = 1;
+            var h = 1;
 
-            while (h < n / 3)
-                h = (3 * h) + 1;
+            while (h < array.Length / 3)
+            {
+                h = h * 3 + 1;
+            }
 
             while (h >= 1)
             {
-                for (int i = h; i < n; i++)
+                for (var i = h; i < array.Length; i++)
                 {
-                    for (int j = i; j >= h && nums[j].CompareTo(nums[j-h]) < 0; j -= h)
-                    {
-                        var temp = nums[j];
-                        nums[j] = nums[j-h];
-                        nums[j-h] = temp;
-                    }
+                    for (var j = i; j >= h && array[j].CompareTo(array[j - h]) < 0; j -= h)
+                        (array[j], array[j - h]) = (array[j - h], array[j]);
                 }
 
-                h = h / 3;
+                h /= 3;
             }
 
-            return nums;
+            return array;
         }
     }
 }

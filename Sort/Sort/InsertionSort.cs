@@ -8,24 +8,15 @@ namespace Sort
 {
     internal static class InsertionSort
     {
-        public static IEnumerable<IComparable> Sort(List<IComparable> list)
+        public static TSource[] ISort<TSource>(this TSource[] array) where TSource : IComparable
         {
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < array.Length; i++)
             {
-                for (int j = i; j > 0 ; j--)
-                {
-                    if (list[j - 1].CompareTo(list[j]) > 0)
-                    {
-                        var x = list[j];
-                        list[j] = list[j - 1];
-                        list[j - 1] = x;
-                    }
-                    else
-                        break;
-                }
+                for (var j = i; j > 0 && array[j - 1].CompareTo(array[j]) > 0; j--)
+                    (array[j], array[j - 1]) = (array[j - 1], array[j]);
             }
 
-            return list;
+            return array;
         }
     }
 }
