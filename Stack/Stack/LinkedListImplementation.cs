@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Stack
     public class LinkedListImplementation<T> : IStack<T>
     {
         private LinkedList<T> numbers;
+
         public LinkedListImplementation(IList<T> numbers)
         {
             this.numbers = new LinkedList<T>(numbers);
