@@ -6,26 +6,16 @@ using System.Threading.Tasks;
 
 namespace Sort
 {
-    public static class MergeSort
+    public static class BottomUpMergeSort
     {
-        public static void Sort<TSource, TKey>(TSource[] array, Func<TSource, TKey> func, int low, int high) where TKey : IComparable<TKey>
+        public static void Sort<TSource, TKey>(TSource[] array, Func<TSource, TKey> func) where TKey : IComparable<TKey>
         {
-            if (low < high)
-            {
-                int mid = low + (high - low) / 2;
+            int size = array.Length;
 
-                Sort(array, func, low, mid);
-                Sort(array, func, mid + 1, high);
-
-                if (func(array[mid + 1]).CompareTo(func(array[mid])) > 0)
-                {
-                    // already sorted
-                }
-
-                Merge(array, low, mid, high, func);
-            }
+            for (int sortedSize = 1; sortedSize < size; sortedSize *= 2)
+                for (int low = 0; low < size - sortedSize; low += 2 * sortedSize)
+                    Merge(array, low, low + sortedSize - 1, Math.Min(low + sortedSize + sortedSize - 1, size - 1), func);
         }
-
         private static void Merge<TSource, TKey>(TSource[] array, int low, int mid, int high, Func<TSource, TKey> func) where TKey : IComparable<TKey>
         {
             int n1 = mid - low + 1;
