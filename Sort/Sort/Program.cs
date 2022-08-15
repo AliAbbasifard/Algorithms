@@ -9,27 +9,9 @@ namespace Sort
     {
         static void Main(string[] args)
         {
+            var numbers = new int[] { 1, 5, 7, -1, 3, 9, 11, 6, -100};
 
-        }
-
-        
-
-        private static int[] GetRandomArray(int length)
-        {
-            var random = new Random();
-
-            return Enumerable.Range(0, length)
-                .Select(_ => random.Next())
-                .ToArray();
-        }
-
-        private static List<int[]> CreateArrays(int count)
-        {
-            var baseArray = GetRandomArray(100_000);
-
-            return Enumerable.Range(0, count)
-                .Select(_ => (baseArray.Clone() as int[])!)
-                .ToList();
+            MergeSort.Sort(numbers, i => i, 0, numbers.Length - 1);
         }
     }
 }
