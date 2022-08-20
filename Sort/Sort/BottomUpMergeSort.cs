@@ -12,9 +12,20 @@ namespace Sort
         {
             int size = array.Length;
 
+            // way 1
             for (int sortedSize = 1; sortedSize < size; sortedSize *= 2)
                 for (int low = 0; low < size - sortedSize; low += 2 * sortedSize)
                     Merge(array, low, low + sortedSize - 1, Math.Min(low + sortedSize + sortedSize - 1, size - 1), func);
+
+            // way 2
+            for (int sortedSize = 1; sortedSize < size; sortedSize *= 2)
+                for (int low = 0; low <= size - 2 * sortedSize; low += 2 * sortedSize)
+                {
+                    var mid = (low + (low + (2 * sortedSize - 1))) / 2;
+                    var high = low + (2 * sortedSize - 1);
+
+                    Merge(array, low, mid, high, func);
+                }
         }
         private static void Merge<TSource, TKey>(TSource[] array, int low, int mid, int high, Func<TSource, TKey> func) where TKey : IComparable<TKey>
         {
