@@ -17,11 +17,6 @@ namespace Sort
                 Sort(array, func, low, mid);
                 Sort(array, func, mid + 1, high);
 
-                if (func(array[mid + 1]).CompareTo(func(array[mid])) > 0)
-                {
-                    // already sorted
-                }
-
                 Merge(array, low, mid, high, func);
             }
         }
