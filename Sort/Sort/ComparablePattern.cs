@@ -7,21 +7,29 @@ using System.Threading.Tasks;
 namespace Sort
 {
     //1: ComparablePattern[] x = new ComparablePattern[];
-    //2: Array.Sort(x);
-    public class ComparablePattern : IComparable<ComparablePattern>
+    //2: Array.Sort(employees, new ComparablePattern());
+    public class Employee
     {
         public int ID;
         public string EmployeeName;
-        public ComparablePattern(int id, string employeename)
+        public Employee(int id, string employeename)
         {
             this.ID = id;
             this.EmployeeName = employeename;
         }
+    }
 
-        public int CompareTo(ComparablePattern other)
+    public class ComparablePattern : IComparer<Employee>
+    {
+        public int Compare(Employee x, Employee y)
         {
-            var t = this;
-            return this.EmployeeName[0].CompareTo(other.EmployeeName[0]);
+            var result = x.EmployeeName[0].CompareTo(y.EmployeeName[0]);
+
+            // for ascending return result
+            return result;
+
+            // for descending
+            //return result * -1;
         }
     }
 }
