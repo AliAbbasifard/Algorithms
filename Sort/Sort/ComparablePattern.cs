@@ -8,7 +8,7 @@ namespace Sort
 {
     //1: ComparablePattern[] x = new ComparablePattern[];
     //2: Array.Sort(x);
-    public class ComparablePattern : IComparable<Employee>
+    public class ComparablePattern : IComparable<ComparablePattern>
     {
         public int ID;
         public string EmployeeName;
@@ -18,7 +18,7 @@ namespace Sort
             this.EmployeeName = employeename;
         }
 
-        public int CompareTo(Employee other)
+        public int CompareTo(ComparablePattern other)
         {
             var t = this;
             return this.EmployeeName[0].CompareTo(other.EmployeeName[0]);
