@@ -9,7 +9,7 @@ namespace Sort
     {
         static void Main(string[] args)
         {
-            
+
         }
     }
 }

@@ -55,5 +55,25 @@ namespace Sort
                 (list[k], list[n]) = (list[n], list[k]);
             }
         }
+
+        //var items = new int[] { 1, 5, 3, 7, -10, -5, 11, 0, 10, -112 };
+        //var result = QuickSort.Selection(items, i => i , 5);
+        public static TSource Selection<TSource, TKey>(TSource[] array, Func<TSource, TKey> key, int k) where TKey : IComparable<TKey>
+        {
+            k--;
+            array.Shuffle();
+            int low = 0;
+            int high = array.Length - 1;
+
+            while(high > low)
+            {
+                int j = Partition(array, key, low, high);
+                if (j < k) low = j + 1;
+                else if (j > k) high = j - 1;
+                else return array[k];
+            }
+
+            return array[k];
+        }
     }
 }
