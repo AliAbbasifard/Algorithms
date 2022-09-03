@@ -35,12 +35,18 @@ namespace Sort
         {
             if (high <= low) return;
 
-            array.Shuffle();
-
-            int j = QuickSort.Partition(array, func, low, high);
+            int j = Partition(array, func, low, high);
 
             Sort(array, func, low, j - 1);
-            Sort(array, func, j+1, high);
+            Sort(array, func, j + 1, high);
+        }
+
+        public static void Sort<TSource, TKey>(TSource[] array, Func<TSource, TKey> func, int low, int high, bool shuffled) where TKey : IComparable<TKey>
+        {    
+            if (!shuffled)
+                array.Shuffle();
+
+            Sort(array, func, low, high);
         }
 
         private static void Shuffle<TSource>(this IList<TSource> list)
