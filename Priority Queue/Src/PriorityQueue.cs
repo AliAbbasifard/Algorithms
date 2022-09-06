@@ -16,17 +16,20 @@ namespace Src
         public void Add(TSource item) { _items.Add(item); }
         public TSource DeleteMax(Func<TSource, TKey> selector)
         {
-            TSource max = _items[0];
-
-            for (int i = 1; i < _items.Count; i++)
+            int maxIndex = 0;
+            for (int i = 0; i < _items.Count; i++)
             {
-                if (selector(max).CompareTo(selector(_items[i])) < 0)
-                    max = _items[i];
+                if (selector(_items[maxIndex]).CompareTo(selector(_items[i])) < 0)
+                    maxIndex = i;
             }
 
-            _items.Remove(max);
+            (_items[maxIndex], _items[_items.Count - 1]) = (_items[_items.Count - 1], _items[maxIndex]);
 
-            return max;
+            var result = _items.Last();
+
+            _items.RemoveAt(_items.Count - 1);
+
+            return result;
         }
         public bool IsEmpty() => _items.Count == 0;
         public TSource Max() => _items.Max();
