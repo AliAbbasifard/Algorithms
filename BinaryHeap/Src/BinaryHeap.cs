@@ -27,9 +27,9 @@ namespace Src
             Swim(_items.Count() - 1, selector);
         }
 
-        public void Sink(int k, Func<int, TSource> selector)
+        public void Sink(int k, Func<int, TSource> selector, int N)
         {
-            while (2 * k + 1 <= _items.Count() - 1)
+            while (2 * k + 1 <= N - 1)
             {
                 int j = 2 * k + 1;
                 if (j < _items.Count() - 1 && selector(j).CompareTo(selector(j + 1)) < 0)
@@ -47,12 +47,10 @@ namespace Src
             TSource item = _items[0];
             (_items[0], _items[_items.Count() - 1]) = (_items[_items.Count() - 1], _items[0]);
             _items.RemoveAt(_items.Count() - 1);
-            Sink(0, selector);
+            Sink(0, selector, _items.Count());
             return item;
         }
     }
-
-
     /// <summary>
     /// How to use: 
     /// 
@@ -70,7 +68,7 @@ namespace Src
             BinaryHeap<TSource> binaryHeap = new BinaryHeap<TSource>(sources);
 
             for (int i = sources.Count() / 2 - 1; i >= 0 ; i--)
-                binaryHeap.Sink(i, i => binaryHeap._items[i]);
+                binaryHeap.Sink(i, i => binaryHeap._items[i], binaryHeap._items.Count());
 
             return binaryHeap;
         }
@@ -79,14 +77,13 @@ namespace Src
     {
         public static IList<TSource> Sort(BinaryHeap<TSource> binaryHeap)
         {
-            var result = new TSource[binaryHeap._items.Count()];
-
             for (int i = binaryHeap._items.Count() - 1; i >=0 ; i--)
             {
-                result[i] = binaryHeap.DeleteMax(i => binaryHeap._items[i]);
+                (binaryHeap._items[0], binaryHeap._items[i]) = (binaryHeap._items[i], binaryHeap._items[0]);
+                binaryHeap.Sink(0, i => binaryHeap._items[i], i - 1);
             }
 
-            return result;
+            return binaryHeap._items;
         }
     }
 }
