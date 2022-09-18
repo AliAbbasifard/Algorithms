@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Src
 {
-    public interface ISymbolTable<TKey, TValue>
+    public interface ISymbolTable<TKey, TValue> where TKey : IComparable<TKey>
     {
         void Put(TKey key, TValue value);
         TValue Get(TKey key);
-        void Delete(TKey key);
+        void Delete(TKey key); 
         bool Contains(TKey key);
-        bool isEmpty();
-        int size();
+        bool IsEmpty();
+        int Size();
         IEnumerable<TKey> Keys();
     }
 }
