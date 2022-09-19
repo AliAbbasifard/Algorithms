@@ -7,7 +7,7 @@ namespace Src
     {
         static void Main(string[] args)
         {
-           
+
         }
     }
 }
